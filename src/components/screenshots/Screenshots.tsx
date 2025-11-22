@@ -2,6 +2,10 @@ import axios from "axios";
 import { useEffect, useRef, useState } from "react";
 import Webcam from "react-webcam";
 
+interface IPhoto {
+  url: string;
+}
+
 const Screenshots = () => {
   const webcameraRef = useRef<null | Webcam>(null);
   const [imageURL, setImageURL] = useState<string>("");
@@ -58,7 +62,7 @@ const Screenshots = () => {
         <img src={imageURL} alt="" />
       </div>
       <div className="list">
-        {pictures.map((item) => (
+        {pictures?.map((item: IPhoto) => (
           <img src={item.url} alt="" />
         ))}
       </div>
